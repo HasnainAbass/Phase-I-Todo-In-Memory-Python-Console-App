@@ -1,55 +1,42 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+Sync Impact Report:
+Version change: N/A (initial creation) → v1.0.0
+Modified principles: N/A
+Added sections: All principles and sections specific to the Todo application
+Removed sections: N/A
+Templates requiring updates: ⚠ pending (templates will need to be updated separately)
+Follow-up TODOs: None
+-->
+
+# The Evolution of Todo Application Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Spec-Driven Development
+All implementation must originate from approved specifications. Do not write or modify code unless a spec exists and is approved. Keep a complete specs history in `.specify/specs-history/`. This ensures traceability and prevents feature creep during development.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Agentic Dev Stack Workflow
+Follow the strict sequence: Clarify requirements → Write spec → Generate plan → Break into tasks → Implement via Claude Code. This systematic approach ensures comprehensive planning before any implementation begins, preventing ad-hoc coding.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Scope Control (Phase-I Only)
+Implement only the Basic Level features: Add Task, Delete Task, Update Task, View Task List, Mark Task as Complete/Incomplete. No database, no authentication, no web UI, no external APIs, no cloud deployment. This maintains focus on core functionality during Phase-I development.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Quality Standards
+Maintain Python 3.13+ compatibility with clean code principles emphasizing readability, modularity, and single-responsibility. Use proper Python project structure under `/src`, meaningful function and variable names, and clear separation of concerns (models, services, CLI interface).
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Technical Constraints Compliance
+Use in-memory storage only (no files, no DB), console-based interaction (CLI), UV for environment management, and ensure the app runs via a single CLI entry point. This enforces the Phase-I constraint of a simple, self-contained application.
 
-### [PRINCIPLE_6_NAME]
+### VI. Validation & Error Handling
+Implement graceful handling of invalid IDs, friendly CLI messages, no crashes on wrong input, and input validation for empty titles. This ensures robust user experience even with incorrect inputs.
 
+## Deliverables Enforcement
+The final repository must contain: `.specify/constitution.md`, `.specify/specs-history/` (all specs versions), `/src` (Python source code), `README.md` with setup and run instructions, `CLAUDE.md` with Claude Code usage instructions. Each deliverable serves auditability and reproducibility requirements.
 
-[PRINCIPLE__DESCRIPTION]
-
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
-
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
-
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
-
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+## Documentation Standards
+Documentation must follow specific requirements: README includes UV setup, how to run app, example usage; CLAUDE.md includes how Claude Code was used, how specs were generated, how plans and tasks were followed. This ensures complete process transparency for hackathon review.
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
+This constitution supersedes all other practices during the project lifecycle. All implementation work must verify compliance with these principles. Amendments require formal documentation and approval process. All development artifacts must support the auditability requirement for hackathon evaluation.
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
-
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Version**: v1.0.0 | **Ratified**: 2026-02-07 | **Last Amended**: 2026-02-07
